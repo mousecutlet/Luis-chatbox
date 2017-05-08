@@ -1,0 +1,75 @@
+<HTML>
+    <HEAD>
+        <link rel="stylesheet" type="text/css" href="StyleSheet_chatbot.css" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <TITLE>Welcome!</TITLE>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+
+                var bot_template = "<div class='chat user' id='user'> <div class='user-photo'></div> <div class='chatMessage' id='chatMessage_user'> <p>^^Text</p> </div> </div>";
+
+                var self_template = "<div class='chat self' id='self'> <div class='user-photo'></div> <div class='chatMessage' id='chatMessage_self'> <p>^^Text</p> </div> </div>";
+
+                var count=0;
+                $('button').click(function(){
+
+
+                    count=count+1;
+                    var message = $('textarea').val();
+
+                    var html_msg = "";
+
+                    $('textarea').val('');
+
+                    
+                    if(count%2==1)
+                    {
+                        
+                        html_msg = bot_template.replace("^^Text",message);
+                    }
+                    else
+                    {
+                       html_msg = self_template.replace("^^Text",message);
+                    }
+
+                    $("#chat_log").append(html_msg);
+                });
+            });
+        </script>
+        
+    </HEAD>
+    <BODY>
+
+    </script>
+    <div class="chatbox">
+        <div class="chatLogs" id="chat_log">
+
+            <div class="chat user" id="user">
+                <div class="user-photo"></div>
+                <div class="chatMessage" id="chatMessage_user">
+                    <p>Hello user!</p>
+                </div>
+            </div>
+
+            
+            <div class="chat self" id="self">
+                <div class="user-photo"></div>
+                <div class="chatMessage" id="chatMessage_self">
+                    <p>Hello Bot!</p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="chatForm">
+            <textarea class="textarea" id="textarea"></textarea>
+            <button class="button">Send</button>
+        </div>
+    </div>
+
+</BODY>
+</HTML>
